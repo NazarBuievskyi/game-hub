@@ -1,10 +1,9 @@
 import React from 'react';
 import {Game} from "../hooks/useGames";
-import {Card, CardBody, Heading, HStack, Image, Text} from "@chakra-ui/react";
+import {Card, CardBody, Heading, HStack, Image} from "@chakra-ui/react";
 import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
 import getCroppedImageUrl from "../services/image-url";
-import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
 
 interface Props {
@@ -12,7 +11,7 @@ interface Props {
 }
 
 function GameCard({game}: Props) {
-    const {background_image, name, id, parent_platforms, metacritic} = game
+    const {background_image, name, parent_platforms, metacritic} = game
 
 
     return (
