@@ -10,18 +10,6 @@ export interface Genre {
     image_background: string
 }
 
-// const fetchGenres = () => {
-//     axios
-//         .get<Genre[]>('https://api.rawg.io/api/genres')
-//         .then(res => res.data)
-//
-//     return useQuery<Genre[], Error>({
-//         queryKey: ['genres'],
-//         queryFn: fetchGenres
-//     })
-//
-// }
-
 const useGenres = () => useQuery({
     queryKey: ['genres'],
     queryFn: () =>
