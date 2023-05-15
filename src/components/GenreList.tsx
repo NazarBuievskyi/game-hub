@@ -12,6 +12,7 @@ interface Props {
 function GenreList({selectedGenre, onSelectGenre}: Props) {
 
     const {data, isLoading, error} = useGenres()
+    console.log(data)
 
     if (error) return null
     if (isLoading) return <Spinner/>
@@ -20,7 +21,7 @@ function GenreList({selectedGenre, onSelectGenre}: Props) {
         <>
             <Heading fontSize='2xl' marginBottom='3' marginTop={10}>Genres</Heading>
             <List>
-                {data.map((genre) => <ListItem key={genre.id} paddingY={'5px'}>
+                {data?.results.map((genre) => <ListItem key={genre.id} paddingY={'5px'}>
                     <HStack>
                         <Image boxSize={'32px'} borderRadius={8} objectFit='cover' src={getCroppedImageUrl(genre.image_background)}/>
                         <Button
