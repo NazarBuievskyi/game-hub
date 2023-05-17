@@ -1,9 +1,10 @@
 // import genres from "../data/genres";
 import {useQuery} from "react-query";
-import apiClient from "../services/api-client";
-import {FetchResponse} from "./useData";
+import APIClient from "../services/api-client";
 import genres from "../data/genres";
 
+
+const apiClient = new APIClient<Genre>('/genres')
 export interface Genre {
     id: number
     name: string
@@ -12,10 +13,7 @@ export interface Genre {
 
 const useGenres = () => useQuery({
     queryKey: ['genres'],
-    queryFn: () =>
-        apiClient
-            .get<FetchResponse<Genre>>('/genres')
-            .then(res => res.data),
+    queryFn:  apiClient.getAll,
     staleTime: 24 * 60 * 60 * 1000, //24 hours
     initialData: {count: genres.length, results: genres}
 
