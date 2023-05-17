@@ -1,6 +1,6 @@
-import {FetchResponse} from "./useData";
+import {FetchResponse} from "./../services/api-client";
 import {GameQuery} from "../App";
-import {useQuery} from "react-query";
+import {useInfiniteQuery} from "react-query";
 import APIClient from "../services/api-client";
 import {Platform} from "./usePlatforms";
 
@@ -17,16 +17,20 @@ export interface Game {
 
 
 const useGames = (gameQuery: GameQuery) =>
-    useQuery<FetchResponse<Game>, Error>({
+    useInfiniteQuery<FetchResponse<Game>, Error>({
         queryKey: ['games', gameQuery],
-        queryFn: () => apiClient.getAll({
+        queryFn: ({pageParam = 1}) => apiClient.getAll({
             params: {
                 genres: gameQuery.genre?.id,
                 parent_platforms: gameQuery.platform?.id,
                 ordering: gameQuery.sortOrder,
                 search: gameQuery.searchText,
+                page: pageParam,
             }
-        })
+        }),
+        getNextPageParam: (lastPage, allPages) => {
+            return lastPage.next ? allPages.length + 1 : undefined
+        }
     })
 
 export default useGames
