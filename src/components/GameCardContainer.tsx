@@ -1,4 +1,4 @@
-import  {ReactNode} from 'react';
+import {ReactNode} from 'react';
 import {Box} from "@chakra-ui/react";
 
 interface Props {
@@ -7,7 +7,13 @@ interface Props {
 
 function GameCardContainer({children}: Props) {
     return (
-        <Box  borderRadius={10} overflow={'hidden'}>
+        <Box borderRadius={10}
+             overflow='hidden'
+             _hover={{
+                 transform: 'scale(1.03)',
+                 transition: 'transform .2s ease-in',
+
+             }}>
             {children}
         </Box>
     );
