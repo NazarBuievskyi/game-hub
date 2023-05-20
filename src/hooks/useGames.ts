@@ -1,21 +1,11 @@
 import APIClient, {FetchResponse} from "../services/api-client";
 import {useInfiniteQuery} from "react-query";
-import {Platform} from "./usePlatforms";
 import ms from 'ms'
 import useGameQueryStore from "../store";
+import {Game} from "../entities/game";
 
 
 const apiClient = new APIClient<Game>('/games',)
-
-export interface Game {
-    id: number
-    name: string
-    slug: string
-    background_image: string
-    description_raw: string
-    parent_platforms: { platform: Platform }[]
-    metacritic: number
-}
 
 
 const useGames = () => {
