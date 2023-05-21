@@ -1,6 +1,6 @@
 import {useQuery} from "react-query";
 import APIClient from "../services/api-client";
-import {Trailer} from "../entities/trailer";
+import Trailer from "../entities/trailer";
 
 
 const useTrailers = (gameId: number) => {

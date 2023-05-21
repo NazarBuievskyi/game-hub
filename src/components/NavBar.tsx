@@ -9,7 +9,7 @@ import {Link} from "react-router-dom";
 function NavBar() {
     return (
         <HStack padding={'10px'}>
-            <Link to={'/'}><Image src={logo} boxSize='60px' objectFit={'cover'}/></Link>
+            <Link to={'/'}><Image src={logo} boxSize='60px' /></Link>
             <SearchInput/>
             <ColorModeSwitch/>
         </HStack>

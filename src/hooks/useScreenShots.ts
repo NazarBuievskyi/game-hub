@@ -1,6 +1,6 @@
 import {useQuery} from "react-query";
 import APIClient from "../services/api-client";
-import {Screenshot} from "../entities/screenshot";
+import Screenshot from "../entities/screenshot";
 
 
 const useScreenShots = (gameId: number) => {
